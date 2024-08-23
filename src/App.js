@@ -5,19 +5,31 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Dashboard from './pages/Dashboard';
 import CustomerManagement from './pages/CustomerManagement';
+import BookingManagement from './pages/BookingManagement';
+import Payments from './pages/Payments';
+import Marketing from './pages/Marketing';
+import DataVisualization from './pages/DataVisualization';
+import UserManagement from './pages/UserManagement';
 
 const App = () => {
   return (
     <Router>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: 'flex', height: '100vh' }}>
         <Sidebar />
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
           <Header />
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/customers" element={<CustomerManagement />} />
-            {/* Add more routes for other pages as needed */}
-          </Routes>
+          <div style={{ flexGrow: 1, overflow: 'auto', padding: '20px' }}>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/customers" element={<CustomerManagement />} />
+              <Route path="/bookings" element={<BookingManagement />} />
+              <Route path="/payments" element={<Payments />} />
+              <Route path="/marketing" element={<Marketing />} />
+              <Route path="/data" element={<DataVisualization />} />
+              <Route path="/users" element={<UserManagement />} />
+              {/* Add more routes for other pages as needed */}
+            </Routes>
+          </div>
         </div>
       </div>
     </Router>
