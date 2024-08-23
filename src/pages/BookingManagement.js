@@ -62,12 +62,19 @@ const BookingManagement = () => {
     navigate('/bookings/add');
   };
 
+  const customColor = '#4E3827';
+
   return (
     <div style={{ padding: '20px' }}>
       <h1>Booking Management</h1>
       {!selectedBooking && !isAddingBooking && (
         <>
-          <Button variant="contained" color="primary" onClick={handleAddNewBookingClick}>
+          {/* <Button variant="contained" color="primary" onClick={handleAddNewBookingClick}> */}
+          <Button
+            variant="contained"
+            style={{ backgroundColor: customColor, color: '#fff' }} // Custom button color
+            onClick={handleAddNewBookingClick}
+          >
             Add New Booking
           </Button>
           <BookingList bookings={bookings} onSelectBooking={handleSelectBooking} />

@@ -29,6 +29,8 @@ const Marketing = () => {
     console.log('With custom message:', customMessage);
   };
 
+  const customColor = '#4E3827';
+
   return (
     <div style={{ padding: '20px' }}>
       <Typography variant="h4" gutterBottom>Email Campaign Overview</Typography>
@@ -111,7 +113,12 @@ const Marketing = () => {
           </Grid>
 
           <Grid item xs={12} style={{ textAlign: 'right' }}>
-            <Button variant="contained" color="primary" onClick={handleSendEmail}>
+            {/* <Button variant="contained" color="primary" onClick={handleSendEmail}> */}
+            <Button
+            variant="contained"
+            style={{ backgroundColor: customColor, color: '#fff' }} // Custom button color
+            onClick={handleSendEmail}
+            >
               Send Campaign
             </Button>
           </Grid>
