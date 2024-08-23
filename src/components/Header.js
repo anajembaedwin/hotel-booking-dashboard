@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Menu, MenuItem, Typography, styled } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
-import { makeStyles } from '@mui/styles';
 import Logo from '../assets/buzlogo2-rm-bg.png'; // Path to your logo
 
-const useStyles = makeStyles({
-  appBar: {
-    backgroundColor: '#4E3827 !important', // Dark brown color for the header
-    height: '64px',
-  },
-  logo: {
-    height: '100px',
-    marginRight: '20px',
-  },
-  toolbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
+// Styled components using @mui/material's styled API
+const StyledAppBar = styled(AppBar)({
+  backgroundColor: '#4E3827', // Dark brown color for the header
+  height: '64px',
+});
+
+const LogoImage = styled('img')({
+  height: '100px',
+  marginRight: '20px',
+});
+
+const ToolbarContainer = styled(Toolbar)({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
 const Header = () => {
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
 
@@ -44,12 +43,9 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar className={classes.toolbar}>
-        <img src={Logo} alt="Logo" className={classes.logo} />
-        {/* <Typography variant="h6" noWrap>
-          Buz and Socials Reservations
-        </Typography> */}
+    <StyledAppBar position="fixed">
+      <ToolbarContainer>
+        <LogoImage src={Logo} alt="Logo" />
         <div>
           <IconButton
             edge="end"
@@ -73,8 +69,8 @@ const Header = () => {
             <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
           </Menu>
         </div>
-      </Toolbar>
-    </AppBar>
+      </ToolbarContainer>
+    </StyledAppBar>
   );
 };
 
