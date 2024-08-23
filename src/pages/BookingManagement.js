@@ -1,8 +1,10 @@
-// src/pages/BookingManagement.js
 import React, { useState } from 'react';
 import BookingList from '../components/BookingList';
 import BookingDetails from '../components/BookingDetails';
 import AddBooking from '../components/AddBooking';
+import { IconButton, Button } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useNavigate } from 'react-router-dom';
 
 const BookingManagement = () => {
   const [bookings, setBookings] = useState([
@@ -32,22 +34,61 @@ const BookingManagement = () => {
   ]);
 
   const [selectedBooking, setSelectedBooking] = useState(null);
+  const [isAddingBooking, setIsAddingBooking] = useState(false);
+  const navigate = useNavigate();
 
   const handleSelectBooking = (booking) => {
     setSelectedBooking(booking);
+    setIsAddingBooking(false);
+    navigate(`/bookings/${booking.id}`);
   };
 
   const handleAddBooking = (newBooking) => {
     setBookings([...bookings, { ...newBooking, id: bookings.length + 1 }]);
+    setSelectedBooking(null);
+    setIsAddingBooking(false);
+    navigate('/bookings');
+  };
+
+  const handleBackToBookings = () => {
+    setSelectedBooking(null);
+    setIsAddingBooking(false);
+    navigate('/bookings');
+  };
+
+  const handleAddNewBookingClick = () => {
+    setSelectedBooking(null);
+    setIsAddingBooking(true);
+    navigate('/bookings/add');
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', padding: '20px' }}>
-      <BookingList bookings={bookings} onSelectBooking={handleSelectBooking} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-        <BookingDetails booking={selectedBooking} />
-        <AddBooking onAddBooking={handleAddBooking} />
-      </div>
+    <div style={{ padding: '20px' }}>
+      <h1>Booking Management</h1>
+      {!selectedBooking && !isAddingBooking && (
+        <>
+          <Button variant="contained" color="primary" onClick={handleAddNewBookingClick}>
+            Add New Booking
+          </Button>
+          <BookingList bookings={bookings} onSelectBooking={handleSelectBooking} />
+        </>
+      )}
+      {selectedBooking && (
+        <>
+          <IconButton onClick={handleBackToBookings} style={{ marginBottom: 20 }}>
+            <ArrowBackIcon />
+          </IconButton>
+          <BookingDetails booking={selectedBooking} />
+        </>
+      )}
+      {isAddingBooking && (
+        <>
+          <IconButton onClick={handleBackToBookings} style={{ marginBottom: 20 }}>
+            <ArrowBackIcon />
+          </IconButton>
+          <AddBooking onAddBooking={handleAddBooking} />
+        </>
+      )}
     </div>
   );
 };

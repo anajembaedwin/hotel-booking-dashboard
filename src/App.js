@@ -14,15 +14,18 @@ import UserManagement from './pages/UserManagement';
 const App = () => {
   return (
     <Router>
-      <div style={{ display: 'flex', height: '100vh' }}>
-        <Sidebar />
-        <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-          <Header />
-          <div style={{ flexGrow: 1, overflow: 'auto', padding: '20px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <Header />
+        <div style={{ display: 'flex', flexGrow: 1, marginTop: '64px' }}> {/* Margin top for Header */}
+          <Sidebar />
+          <div style={{ flexGrow: 1, marginLeft: '200px', padding: '20px', overflowY: 'auto' }}>
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/customers" element={<CustomerManagement />} />
+              <Route path="/customers/:id" element={<CustomerManagement />} />
               <Route path="/bookings" element={<BookingManagement />} />
+              <Route path="/bookings/:id" element={<BookingManagement />} />
+              <Route path="/bookings/add" element={<BookingManagement />} />
               <Route path="/payments" element={<Payments />} />
               <Route path="/marketing" element={<Marketing />} />
               <Route path="/data" element={<DataVisualization />} />
