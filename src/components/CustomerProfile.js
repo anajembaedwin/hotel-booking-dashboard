@@ -1,5 +1,6 @@
 // src/components/CustomerProfile.js
 import React from 'react';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 
 const CustomerProfile = ({ customer }) => {
   const bookingHistory = [
@@ -18,74 +19,107 @@ const CustomerProfile = ({ customer }) => {
   ];
 
   return (
-    <div style={{ width: '50%' }}>
-      <h2>Customer Profile: {customer.name}</h2>
-      <p><strong>Email:</strong> {customer.email}</p>
-      <p><strong>Phone:</strong> {customer.phone}</p>
-      <p><strong>Address:</strong> {customer.address}</p>
-      <p><strong>Membership Status:</strong> {customer.membershipStatus}</p>
-      <p><strong>Last Contacted:</strong> {customer.lastContacted}</p>
+    <Box sx={{ width: '100%', padding: 4 }}>
+      <Typography variant="h4" gutterBottom>
+        Customer Profile: {customer.name}
+      </Typography>
       
-      <h3>Booking History</h3>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Date</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Room</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookingHistory.map((booking) => (
-            <tr key={booking.id}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{booking.date}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{booking.room}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{booking.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Box mb={4}>
+        <Typography variant="h6" gutterBottom>
+          <strong>Email:</strong> {customer.email}
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          <strong>Phone:</strong> {customer.phone}
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          <strong>Address:</strong> {customer.address}
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          <strong>Membership Status:</strong> {customer.membershipStatus}
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          <strong>Last Contacted:</strong> {customer.lastContacted}
+        </Typography>
+      </Box>
 
-      <h3>Payment Records</h3>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Date</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Amount</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Method</th>
-          </tr>
-        </thead>
-        <tbody>
-          {paymentRecords.map((payment) => (
-            <tr key={payment.id}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{payment.date}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>${payment.amount}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{payment.method}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Box mb={4}>
+        <Typography variant="h5" gutterBottom>
+          Booking History
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell>Room</TableCell>
+                <TableCell>Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {bookingHistory.map((booking) => (
+                <TableRow key={booking.id}>
+                  <TableCell>{booking.date}</TableCell>
+                  <TableCell>{booking.room}</TableCell>
+                  <TableCell>{booking.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
 
-      <h3>Communication Logs</h3>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Date</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Type</th>
-            <th style={{ border: '1px solid #ddd', padding: '8px' }}>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          {communicationLogs.map((log) => (
-            <tr key={log.id}>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.date}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.type}</td>
-              <td style={{ border: '1px solid #ddd', padding: '8px' }}>{log.note}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <Box mb={4}>
+        <Typography variant="h5" gutterBottom>
+          Payment Records
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell>Amount</TableCell>
+                <TableCell>Method</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {paymentRecords.map((payment) => (
+                <TableRow key={payment.id}>
+                  <TableCell>{payment.date}</TableCell>
+                  <TableCell>${payment.amount}</TableCell>
+                  <TableCell>{payment.method}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+
+      <Box mb={4}>
+        <Typography variant="h5" gutterBottom>
+          Communication Logs
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell>Type</TableCell>
+                <TableCell>Note</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {communicationLogs.map((log) => (
+                <TableRow key={log.id}>
+                  <TableCell>{log.date}</TableCell>
+                  <TableCell>{log.type}</TableCell>
+                  <TableCell>{log.note}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Box>
   );
 };
 

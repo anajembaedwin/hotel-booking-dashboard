@@ -111,8 +111,13 @@ const AddBooking = ({ onAddBooking }) => {
           fullWidth
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary" fullWidth>
-          Add Booking
+        <Button 
+        type="submit" 
+        variant="contained" 
+        style={{ backgroundColor: '#4E3827', color: '#fff' }} 
+        fullWidth
+        >
+        Add Booking
         </Button>
       </form>
     </Paper>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Typography, styled } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import Logo from '../assets/buzlogo2-rm-bg.png'; // Path to your logo
 
 // Styled components using @mui/material's styled API
@@ -20,9 +21,10 @@ const ToolbarContainer = styled(Toolbar)({
   alignItems: 'center',
 });
 
-const Header = () => {
+const Header = ({ onSignOut }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
+  const navigate = useNavigate(); // Initialize navigate for programmatic navigation
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -33,12 +35,13 @@ const Header = () => {
   };
 
   const handleSignOut = () => {
-    console.log('User signed out');
+    onSignOut(); // Call the onSignOut function passed as a prop
+    navigate('/'); // Redirect to the Sign In page
     handleMenuClose();
   };
 
-  const handleSignIn = () => {
-    console.log('User signed in');
+  const handleProfileClick = () => {
+    navigate('/users'); // Redirect to the Users page
     handleMenuClose();
   };
 
@@ -50,7 +53,7 @@ const Header = () => {
           <IconButton
             edge="end"
             aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
+            aria-controls="profile-menu"
             aria-haspopup="true"
             onClick={handleProfileMenuOpen}
             color="inherit"
@@ -58,6 +61,7 @@ const Header = () => {
             <AccountCircle />
           </IconButton>
           <Menu
+            id="profile-menu"
             anchorEl={anchorEl}
             anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             keepMounted
@@ -65,7 +69,7 @@ const Header = () => {
             open={isMenuOpen}
             onClose={handleMenuClose}
           >
-            <MenuItem onClick={handleSignIn}>Sign In</MenuItem>
+            <MenuItem onClick={handleProfileClick}>Profile</MenuItem>
             <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
           </Menu>
         </div>
