@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Button, Typography, Box, Paper, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import logo from '../assets/buzlogo-brown-removebg.png';
 
 // Custom styled TextField component
 const CustomTextField = styled(TextField)(({ theme }) => ({
@@ -89,6 +90,10 @@ const SignIn = ({ onSignIn }) => {
       }}
     >
       <Container maxWidth="sm">
+          {/* Logo Section */}
+          <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
+            <img src={logo} alt="Buz and Socials Brown Logo" style={{ maxWidth: '200px' }} />
+          </Box>
         <Paper elevation={3} sx={{ padding: '40px', backgroundColor: '#4E3827', color: '#e4e2dd' }}>
           <Typography variant="h4" gutterBottom>
             Sign In
