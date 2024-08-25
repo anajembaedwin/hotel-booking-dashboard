@@ -1,10 +1,14 @@
 import React from 'react';
 import ChartComponent from '../components/Chart';
 import { Card, CardContent, Typography, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const customColor = '#4E3827';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
+
   // Data for Bookings Overview
   const bookingData = {
     labels: [
@@ -53,6 +57,7 @@ const Dashboard = () => {
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}
+              onClick={() => navigate('/bookings')}  // Link to Bookings Page
             >
               View All Bookings
             </Button>
@@ -66,6 +71,7 @@ const Dashboard = () => {
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}
+              onClick={() => navigate('/customers')}  // Link to Customers Page
             >
               View Customer List
             </Button>
@@ -79,6 +85,7 @@ const Dashboard = () => {
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}
+              onClick={() => navigate('/payments')}  // Link to Payments Page
             >
               View Payment History
             </Button>
@@ -92,6 +99,7 @@ const Dashboard = () => {
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}
+              onClick={() => navigate('/marketing')}  // Link to Marketing Page
             >
               View Campaigns
             </Button>
@@ -105,6 +113,7 @@ const Dashboard = () => {
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}
+              onClick={() => navigate('/data')}  // Link to Data Insights Page
             >
               View Data Insights
             </Button>
