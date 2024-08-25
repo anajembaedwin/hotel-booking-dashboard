@@ -3,26 +3,36 @@ import React from 'react';
 import Table from './Table';
 
 const CustomerList = ({ onSelectCustomer }) => {
+  // Dummy customer data
   const customers = [
     {
-      id: 1,
+      _id: '1',
       name: 'John Doe',
-      email: 'john@example.com',
+      email: 'john.doe@example.com',
       phone: '123-456-7890',
-      address: '123 Main St, Springfield',
-      membershipStatus: 'Gold',
-      lastContacted: '2024-08-15',
+      address: '123 Main St, Springfield'
     },
     {
-      id: 2,
+      _id: '2',
       name: 'Jane Smith',
-      email: 'jane@example.com',
+      email: 'jane.smith@example.com',
       phone: '098-765-4321',
-      address: '456 Elm St, Springfield',
-      membershipStatus: 'Silver',
-      lastContacted: '2024-08-10',
+      address: '456 Elm St, Springfield'
     },
-    // Add more customer data here...
+    {
+      _id: '3',
+      name: 'Emily Johnson',
+      email: 'emily.johnson@example.com',
+      phone: '234-567-8901',
+      address: '789 Oak St, Springfield'
+    },
+    {
+      _id: '4',
+      name: 'Michael Brown',
+      email: 'michael.brown@example.com',
+      phone: '345-678-9012',
+      address: '101 Pine St, Springfield'
+    }
   ];
 
   const columns = [
@@ -30,17 +40,24 @@ const CustomerList = ({ onSelectCustomer }) => {
     'Name', 
     'Email', 
     'Phone', 
-    'Address', 
-    'Membership Status', 
-    'Last Contacted'
+    'Address'
   ];
+
+  // Transform the customers array into the format expected by the Table component
+  const data = customers.map(customer => ({
+    id: customer._id,
+    name: customer.name,
+    email: customer.email,
+    phone: customer.phone,
+    address: customer.address || 'N/A'
+  }));
 
   return (
     <div style={{ flex: 1, padding: '20px', boxSizing: 'border-box' }}>
       <Table
         title="Customers"
         columns={columns}
-        data={customers}
+        data={data}
         onSelectRow={onSelectCustomer}
       />
     </div>
@@ -48,6 +65,46 @@ const CustomerList = ({ onSelectCustomer }) => {
 };
 
 export default CustomerList;
+
+
+
+
+// import React from 'react';
+// import Table from './Table';
+
+// const CustomerList = ({ customers = [], onSelectCustomer }) => { // Provide default value as empty array
+//   const columns = [
+//     'ID', 
+//     'Name', 
+//     'Email', 
+//     'Phone', 
+//     'Address'
+//   ];
+
+//   // Transform the customers array into the format expected by the Table component
+//   const data = customers.map(customer => ({
+//     id: customer._id, // Ensure this matches your schema field names
+//     name: customer.name,
+//     email: customer.email,
+//     phone: customer.phone,
+//     address: customer.address || 'N/A' // Provide default value if address is not present
+//   }));
+
+//   return (
+//     <div style={{ flex: 1, padding: '20px', boxSizing: 'border-box' }}>
+//       <Table
+//         title="Customers"
+//         columns={columns}
+//         data={data}
+//         onSelectRow={onSelectCustomer}
+//       />
+//     </div>
+//   );
+// };
+
+// export default CustomerList;
+
+
 
 
 
