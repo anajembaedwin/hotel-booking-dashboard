@@ -81,7 +81,7 @@ const Dashboard = () => {
         <Card style={{ marginBottom: 20 }}>
           <CardContent>
             <Typography variant="h6">Payments</Typography>
-            <Typography variant="body2">Total payments received this month: $25,000.</Typography>
+            <Typography variant="body2">Total payments received this month: ₦25,000.</Typography>
             <Button 
               variant="contained" 
               style={{ backgroundColor: customColor, color: '#fff', marginTop: 10 }}

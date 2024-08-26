@@ -4,8 +4,8 @@ import { Grid, Paper, Typography, Table, TableBody, TableCell, TableHead, TableR
 
 const Payments = () => {
   const paymentSummary = {
-    totalPayments: '$25,000',
-    outstandingBalance: '$5,000',
+    totalPayments: '₦25,000',
+    outstandingBalance: '₦5,000',
     lastPaymentDate: '2024-08-20',
   };
 
@@ -14,7 +14,7 @@ const Payments = () => {
       id: 1,
       customer: 'John Doe',
       hotel: 'Hotel Sunshine',
-      amount: '$500',
+      amount: '₦500',
       date: '2024-08-20',
       status: 'Completed',
     },
@@ -22,7 +22,7 @@ const Payments = () => {
       id: 2,
       customer: 'Jane Smith',
       hotel: 'Ocean View Resort',
-      amount: '$1000',
+      amount: '₦1000',
       date: '2024-08-19',
       status: 'Pending',
     },

@@ -36,7 +36,7 @@ const BookingList = ({ bookings, onSelectBooking }) => {
     checkInDate: new Date(booking.checkInDate).toLocaleDateString(),
     checkOutDate: new Date(booking.checkOutDate).toLocaleDateString(),
     paymentStatus: booking.paymentStatus,
-    totalAmount: `$${Number(booking.totalAmount).toFixed(2)}`
+    totalAmount: `₦${Number(booking.totalAmount).toFixed(2)}`
   }));
   
 
